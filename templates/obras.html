@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <Title>Obras</Title>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='css/obras_style.css') }}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans"/>
+    </head>
+
+<body>
+    
+    <nav>
+        <h2 class ="logo"> Natalia <span>Yerra</span> </h2>
+
+        <ul>
+            <li><a href="#" style = "color: #972F22;">Obras</a></li>
+            <li><a href="#">Autores</a></li>
+            <li><a href="#">Exposiciones</a></li>
+            <li><a href="#">Autores</a></li>
+        </ul>
+    </nav>
+
+
+    <div class = "table-obras"> 
+        
+            {% for title in titulos %}
+            <tr>
+                <td><a href="#" style = "padding: 0 15px;" >{{title}} </a></td>
+            </tr>
+            {% endfor %}
+    </div>  
+    
+</body>
+
+</html>
