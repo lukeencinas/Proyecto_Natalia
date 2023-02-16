@@ -5,6 +5,7 @@ USE ProyectoNatalia
 CREATE TABLE Obras (
     N_Registro INT,
     Titulo VARCHAR(255),
+    archivo_jpg VARCHAR(255),
     Autor VARCHAR(255),
     Fecha_compra DATE,
     Año_compra INT,

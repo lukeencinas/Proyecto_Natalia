@@ -1,36 +1,99 @@
 <!DOCTYPE html>
-
 <html>
     <head>
-        <Title>Obras</Title>
-        <link rel="stylesheet" href="{{ url_for('static', filename ='css/obras_style.css') }}">
+        <title>Obras</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/obras_style.css') }}">
     </head>
 
-<body>
-    
-    <nav>
-        <h2 class ="logo"> Natalia <span>Yerra</span> </h2>
+    <style>
+        .artwork {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+            vertical-align: top;
+            position: relative; /* set position to relative */
+        }
 
-        <ul>
-            <li><a href="#" style = "color: #972F22;">Obras</a></li>
-            <li><a href="#">Autores</a></li>
-            <li><a href="#">Exposiciones</a></li>
-            <li><a href="#">Autores</a></li>
-        </ul>
-    </nav>
+        .artwork img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .artwork p {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            max-width: 90%;
+            margin: auto;
+        }
+
+        /* Style for tooltip */
+        .artwork .tooltip {
+            display: none; /* hide the tooltip by default */
+            position: absolute; /* set position to absolute */
+            top: -30px; /* adjust the top and left values based on your preference */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .artwork:hover .tooltip {
+            display: block; /* show the tooltip on hover */
+        }
 
 
-    <div class = "table-obras"> 
-        
-            {% for title in titulos %}
-            <tr>
-                <td><a href="#" style = "padding: 0 15px;" >{{title}} </a></td>
-            </tr>
-            {% endfor %}
-    </div>  
-    
-</body>
+    </style>
 
+    <body>
+        <nav>
+            <h2 class ="logo"> Natalia <span>Yerra</span> </h2>
+
+            <ul>
+                <li><a href="#" style="color: #972F22;">Obras</a></li>
+                <li><a href="#">Autores</a></li>
+                <li><a href="#">Exposiciones</a></li>
+                <li><a href="#">Autores</a></li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <div class="gallery">
+                <div style="display: table;">
+                    {% for artwork in artworks %}
+                    <div class="artwork">
+                        <span class="tooltip">
+                            <ul>
+                                <li>{{artwork.autor}}</li>
+                                <li>{{artwork.año}}</li>
+                                <li>{{artwork.medidas}}</li>
+                            </ul>
+                        </span>
+                        <img src="{{ url_for('static', filename=artwork.archivo_jpg) }}" alt="{{ artwork.title }}">
+                        <p>{{ artwork.title }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

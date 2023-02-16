@@ -61,7 +61,7 @@ def Cargar_Excel_BBDD(Excel,Conexion):
        
         
         
-        query = "INSERT INTO Obras (N_Registro, Titulo, Autor, Fecha_compra, Año_compra, Valor_adquisicion, Tasacion_actual, Ubicacion, Serie, Edicion, Ediciones_Totales, CEF_Autor, CEF_Galeria, Foto_HD, Historial_Procedencia, Año, Categoria, Caracteristicas, Marco,Cristal,Firma,Firma2,Observaciones,OTROS_NOMBRES,Referencias,Proveedor,Embalaje,Mol_Obra,Moa_Obra,Mop_Obra,Medidas_obra,Mml_marco,Mma_marco,Mmp_marco,Medidas_con_Marco,MCL_embalaje,MCA_embalaje,MCP_embalaje,Medidas_embalaje,Fecha_caja) VALUES ({},'{}','{}','{}',{},{},{},'{}','{}',{},'{}','{}','{}','{}','{}',{},'{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}',{})".format(*my_list)
+        query = "INSERT INTO Obras (N_Registro, Titulo, archivo_jpg ,Autor, Fecha_compra, Año_compra, Valor_adquisicion, Tasacion_actual, Ubicacion, Serie, Edicion, Ediciones_Totales, CEF_Autor, CEF_Galeria, Foto_HD, Historial_Procedencia, Año, Categoria, Caracteristicas, Marco,Cristal,Firma,Firma2,Observaciones,OTROS_NOMBRES,Referencias,Proveedor,Embalaje,Mol_Obra,Moa_Obra,Mop_Obra,Medidas_obra,Mml_marco,Mma_marco,Mmp_marco,Medidas_con_Marco,MCL_embalaje,MCA_embalaje,MCP_embalaje,Medidas_embalaje,Fecha_caja) VALUES ({},'{}','archivo1.jpg','{}','{}',{},{},{},'{}','{}',{},'{}','{}','{}','{}','{}',{},'{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}',{})".format(*my_list)
         
         cursor.execute(query)
 
@@ -71,7 +71,7 @@ def Cargar_Excel_BBDD(Excel,Conexion):
 def main():
 
     db = mysql.connector.connect(user='root', 
-                            password='',
+                            password='20cancrilA',
                             host='localhost',
                             database = 'proyectonatalia')
 
