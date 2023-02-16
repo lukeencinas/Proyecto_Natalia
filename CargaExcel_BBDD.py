@@ -71,7 +71,7 @@ def Cargar_Excel_BBDD(Excel,Conexion):
 def main():
 
     db = mysql.connector.connect(user='root', 
-                            password='20cancrilA',
+                            password='',
                             host='localhost',
                             database = 'proyectonatalia')
 
