@@ -5,26 +5,78 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans"/>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/obras_style.css') }}">
+        
     </head>
 
     <style>
-        .artwork {
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 40px;
+            padding-left: 10%;
+            padding-right: 10% ;
+        }
+        .logo{
+            color: black;
+            font-size: 28px;
+        }
+
+        nav ul li{
+            list-style-type: none ;
             display: inline-block;
+            padding: 10px;
+        }
+
+        nav ul li a{
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover{
+            color: #972F22 ;
+            transition: .3s;
+        }
+
+        span {
+            color: #972F22
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            max-width: 90%;
+            margin: auto;
+        }
+
+        .artwork {
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
             margin: 10px;
             text-align: center;
-            vertical-align: top;
-            position: relative; /* set position to relative */
+            width: calc(25% - 20px);
+            position: relative;
         }
 
         .artwork img {
-            width: 300px;
-            height: 300px;
+            width: 100%;
+            max-height: 300px; 
+            object-fit: cover; 
         }
 
         .artwork p {
             font-size: 20px;
             font-weight: bold;
             padding: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .container {
@@ -34,20 +86,13 @@
             height: 100vh;
         }
 
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            max-width: 90%;
-            margin: auto;
-        }
+        
 
         /* Style for tooltip */
         .artwork .tooltip {
-            display: none; /* hide the tooltip by default */
-            position: absolute; /* set position to absolute */
-            top: -30px; /* adjust the top and left values based on your preference */
+            display: none; 
+            position: absolute; 
+            top: -110%S; 
             left: 50%;
             transform: translateX(-50%);
             background-color: #333;
@@ -55,10 +100,34 @@
             padding: 5px;
             border-radius: 5px;
             font-size: 14px;
+            text-align: center;
+            padding-left:5px ;
         }
 
         .artwork:hover .tooltip {
-            display: block; /* show the tooltip on hover */
+            display: block; 
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .search-container input {
+            width: 300px;
+            height: 40px;
+            padding: 5px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+        }
+        .artwork-table {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
         }
 
 
@@ -75,10 +144,16 @@
                 <li><a href="#">Autores</a></li>
             </ul>
         </nav>
-
+        
+        
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Buscar obra..."  style="text-align: center;">
+        </div>
+        
+        
         <div class="container">
             <div class="gallery">
-                <div style="display: table;">
+                <div class="artwork-table">
                     {% for artwork in artworks %}
                     <div class="artwork">
                         <span class="tooltip">
@@ -96,4 +171,30 @@
             </div>
         </div>
     </body>
+
+
+    <script type="text/javascript">
+
+
+    const search = document.querySelector('#search');
+    const artworks = document.querySelectorAll('.artwork');
+
+    search.addEventListener('input', function(event) {
+        const searchTerm = event.target.value.toLowerCase();
+        artworks.forEach(function(artwork) {
+            const title = artwork.querySelector('p').textContent.toLowerCase();
+            if (searchTerm && title.includes(searchTerm)) {
+                artwork.style.display = 'inline-block';
+                artwork.style.width = '300px';
+            } else if (!searchTerm) {
+                artwork.style.display = 'inline-block';
+                artwork.style.width = 'calc(25% - 20px)';
+            } else {
+                artwork.style.display = 'none';
+            }
+        });
+    });
+
+    </script>
+
 </html>
