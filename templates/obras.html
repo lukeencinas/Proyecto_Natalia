@@ -176,24 +176,24 @@
     <script type="text/javascript">
 
 
-    const search = document.querySelector('#search');
-    const artworks = document.querySelectorAll('.artwork');
+        const search = document.querySelector('#search');
+        const artworks = document.querySelectorAll('.artwork');
 
-    search.addEventListener('input', function(event) {
-        const searchTerm = event.target.value.toLowerCase();
-        artworks.forEach(function(artwork) {
-            const title = artwork.querySelector('p').textContent.toLowerCase();
-            if (searchTerm && title.includes(searchTerm)) {
-                artwork.style.display = 'inline-block';
-                artwork.style.width = '300px';
-            } else if (!searchTerm) {
-                artwork.style.display = 'inline-block';
-                artwork.style.width = 'calc(25% - 20px)';
-            } else {
-                artwork.style.display = 'none';
-            }
+        search.addEventListener('input', function(event) {
+            const searchTerm = event.target.value.toLowerCase();
+            artworks.forEach(function(artwork) {
+                const title = artwork.querySelector('p').textContent.toLowerCase();
+                if (searchTerm && title.includes(searchTerm)) {
+                    artwork.style.display = 'inline-block';
+                    artwork.style.width = '300px';
+                } else if (!searchTerm) {
+                    artwork.style.display = 'inline-block';
+                    artwork.style.width = 'calc(25% - 20px)';
+                } else {
+                    artwork.style.display = 'none';
+                }
+            });
         });
-    });
 
     </script>
 
